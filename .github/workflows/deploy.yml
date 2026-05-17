@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare public folder
+        run: |
+          rm -rf public || true
+          mkdir public
+          rsync -av --exclude='.git' --exclude='.github' --exclude='public' --exclude='node_modules' --exclude='.gitignore' --exclude='README.md' . public/
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public
+          token: ${{ secrets.GITHUB_TOKEN }}
