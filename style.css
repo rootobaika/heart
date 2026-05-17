@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    overflow: hidden;
+    min-height: 100vh;
+    color: #fff;
+    background: #0b0a0c; /* Базовый глубокий премиум-тёмный цвет */
+}
+
+* { 
+    box-sizing: border-box; 
+}
+
+.stage {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+}
+
+.panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 28px;
+}
+
+#heart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Кнопка в утонченном стиле розового матового золота */
+.pill {
+    padding: 16px 44px;
+    background: rgba(255, 255, 255, 0.02);
+    color: #e8829b; /* Сдержанный, дорогой оттенок пыльной розы */
+    font-family: 'Italiana', serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    border: 1px solid rgba(232, 130, 155, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 12;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pill:hover { 
+    transform: translateY(-2px); 
+    background: rgba(156, 28, 60, 0.06); /* Мягкий винный оттенок при ховере */
+    border-color: rgba(232, 130, 155, 0.6);
+    color: #fff;
+    box-shadow: 0 16px 48px rgba(156, 28, 60, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    text-shadow: 0 0 10px rgba(232, 130, 155, 0.5);
+}
+
+.pill:active {
+    transform: translateY(1px);
+}
+
+.pill.hidden { 
+    opacity: 0; 
+    pointer-events: none; 
+    transform: translateY(12px) scale(0.96); 
+}
